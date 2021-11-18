@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">RidePal</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="explore_your">Explore Your</string>
+    <string name="surroundings">Surroundings</string>
+    <string name="track_your">Track Your</string>
+    <string name="location">Location</string>
+    <string name="live_health">Live Health</string>
+    <string name="readings">Readings</string>
+    <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex</string>
+    <string name="policy">Creating an account means you’re okay with our <u>Terms of Service</u> and our <u>Privacy Policy</u></string>
+    <string name="welcome">Hello &#x1F44B; Welcome to the DashBoard &#x1F917;</string>
+</resources>
