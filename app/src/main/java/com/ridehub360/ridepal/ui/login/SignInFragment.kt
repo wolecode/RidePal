@@ -1,61 +1,96 @@
-package com.ridehub360.ridepal
+package com.ridehub360.ridepal.ui.login
 
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.Typeface
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.*
 import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
 import android.text.style.ForegroundColorSpan
 import android.text.style.StyleSpan
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import kotlinx.android.synthetic.main.activity_sign_in.*
+import androidx.navigation.fragment.findNavController
+import com.ridehub360.ridepal.MainActivity
+import com.ridehub360.ridepal.R
+import com.ridehub360.ridepal.databinding.FragmentSignInBinding
 
-class SignInActivity : AppCompatActivity() {
-
+class SignInFragment : Fragment() {
+    lateinit var binding: FragmentSignInBinding
     private lateinit var emailTextWatcher: TextWatcher
     private lateinit var passwordTextWatcher: TextWatcher
     private lateinit var viewModel: SignInViewModel
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_sign_in)
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        // Inflate the layout for this fragment
 
+        return FragmentSignInBinding.inflate(inflater).let {
+            binding = it
+            it.root
+        }
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         setupView()
         observeFields()
     }
 
     private fun setupView() {
         viewModel = ViewModelProvider(this).get(SignInViewModel::class.java)
-        setClickableString(tv_sign_up.text.toString().trim(), "Sign Up", tv_sign_up)
-        setupTextWatcher()
-        et_email.addTextChangedListener(emailTextWatcher)
-        et_password.addTextChangedListener(passwordTextWatcher)
-        bt_sign_in.setOnClickListener {
-            startActivity(Intent(this, MainActivity::class.java))
-            finish()
+
+        with(binding) {
+            setClickableString(tvSignUp.text.toString().trim(), "Sign Up", tvSignUp)
+            setupTextWatcher()
+            etEmail.addTextChangedListener(emailTextWatcher)
+            etPassword.addTextChangedListener(passwordTextWatcher)
+            btSignIn.setOnClickListener {
+                startActivity(Intent(requireContext(), MainActivity::class.java))
+                requireActivity().finish()
+            }
         }
+
+
     }
 
     private fun setClickableString(wholeText: String, clickableText: String, tv: TextView) {
         val spannableString = SpannableString(wholeText)
         val startIndex = wholeText.indexOf(clickableText)
+
         val endIndex = startIndex + clickableText.length
-        spannableString.setSpan(StyleSpan(Typeface.BOLD), startIndex, endIndex, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
-        spannableString.setSpan(ForegroundColorSpan(Color.parseColor("#3172AC")), startIndex, endIndex, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
-        spannableString.setSpan(object: ClickableSpan() {
+        spannableString.setSpan(
+            StyleSpan(Typeface.BOLD),
+            startIndex,
+            endIndex,
+            Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
+        spannableString.setSpan(
+            ForegroundColorSpan(Color.parseColor("#3172AC")),
+            startIndex,
+            endIndex,
+            Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
+
+        spannableString.setSpan(object : ClickableSpan() {
             override fun updateDrawState(ds: TextPaint) {
                 super.updateDrawState(ds)
                 ds.isUnderlineText = false
             }
+
             override fun onClick(widget: View) {
-                startActivity(Intent(this@SignInActivity, SignUpActivity::class.java))
-                finish()
+                val controller = findNavController()
+                val action = SignInFragmentDirections.signInFragmentToSignUpFragment()
+                controller.navigate(action)
+                //startActivity(Intent(this@SignInActivity, SignUpActivity::class.java))
+               // finish()
             }
         }, startIndex, endIndex, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
         tv.text = spannableString
@@ -63,7 +98,7 @@ class SignInActivity : AppCompatActivity() {
     }
 
     private fun setupTextWatcher() {
-        emailTextWatcher = object: TextWatcher {
+        emailTextWatcher = object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
             }
 
@@ -72,7 +107,7 @@ class SignInActivity : AppCompatActivity() {
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 if (s!!.toString().contains("@") && s.toString().contains(".")) {
-                    et_email_layout.isErrorEnabled = false
+                    binding.etEmailLayout.isErrorEnabled = false
                     viewModel.apply {
                         emailValid.value = true
                         setDataFilled()
@@ -82,7 +117,7 @@ class SignInActivity : AppCompatActivity() {
                         emailValid.value = false
                         setDataFilled()
                     }
-                    et_email_layout.apply {
+                    binding.etEmailLayout.apply {
                         isErrorEnabled = true
                         error = "Input a valid Email Address"
                     }
@@ -90,7 +125,7 @@ class SignInActivity : AppCompatActivity() {
             }
         }
 
-        passwordTextWatcher = object: TextWatcher{
+        passwordTextWatcher = object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
             }
 
@@ -99,7 +134,7 @@ class SignInActivity : AppCompatActivity() {
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 if (s!!.trim().length >= 8) {
-                    et_password_layout.isErrorEnabled = false
+                    binding.etPasswordLayout.isErrorEnabled = false
                     viewModel.apply {
                         passwordValid.value = true
                         setDataFilled()
@@ -109,7 +144,7 @@ class SignInActivity : AppCompatActivity() {
                         passwordValid.value = false
                         setDataFilled()
                     }
-                    et_password_layout.apply {
+                    binding.etPasswordLayout.apply {
                         isErrorEnabled = true
                         error = "Password should be at least 8 characters"
                     }
@@ -119,14 +154,14 @@ class SignInActivity : AppCompatActivity() {
     }
 
     private fun observeFields() {
-        viewModel.allDataFilled.observe(this, Observer {
+        viewModel.allDataFilled.observe(viewLifecycleOwner, Observer {
             if (it) {
-                bt_sign_in.apply {
+                binding.btSignIn.apply {
                     isEnabled = true
                     setBackgroundColor(resources.getColor(R.color.colorPrimary))
                 }
             } else {
-                bt_sign_in.apply {
+                binding.btSignIn.apply {
                     isEnabled = false
                     setBackgroundColor(resources.getColor(R.color.buttonDisabledColor))
                 }

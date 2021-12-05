@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/sign_in_navigation"
+    app:startDestination="@id/signInFragment">
+    <fragment
+        android:id="@+id/signInFragment"
+        android:name="com.ridehub360.ridepal.ui.login.SignInFragment"
+        tools:layout="@layout/fragment_sign_in">
+        <action
+            android:id="@+id/signInFragmentToSignUpFragment"
+            app:destination="@+id/signUpFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signUpFragment"
+        android:name="com.ridehub360.ridepal.ui.login.SignUpFragment"
+        tools:layout="@layout/activity_sign_up">
+        <action
+            android:id="@+id/signUpFragmentToSignInFragment"
+            app:destination="@+id/signInFragment" />
+    </fragment>
+</navigation>

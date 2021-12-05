@@ -3,6 +3,7 @@
     package="com.ridehub360.ridepal">
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
 
     <application
         android:allowBackup="true"
@@ -14,10 +15,13 @@
         <activity android:name="com.ridehub360.ridepal.SignUpActivity">
 
         </activity>
-        <activity android:name="com.ridehub360.ridepal.SignInActivity" />
+        <activity
+            android:name="com.ridehub360.ridepal.ui.login.SignInActivity"
+            android:theme="@style/FullScreenTheme"/>
         <activity
             android:name="com.ridehub360.ridepal.SplashActivity"
-            android:theme="@style/SplashScreenTheme">
+            android:theme="@style/SplashScreenTheme"
+            android:exported="true">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
