@@ -1,15 +1,45 @@
 package com.ridehub360.ridepal.ui
 
 import android.content.Context
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
 import androidx.viewpager.widget.PagerAdapter
+import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.ridehub360.ridepal.OnBoardingPagerFragment
 import com.ridehub360.ridepal.R
 
+
+class OnBoardingAdapter(fragmentActivity: FragmentActivity): FragmentStateAdapter(fragmentActivity) {
+
+    override fun getItemCount() = 3
+
+    override fun createFragment(position: Int): Fragment {
+        val bundle = Bundle().apply {
+            putInt("POSITION", position)
+        }
+        return OnBoardingPagerFragment().apply {
+            arguments = bundle
+        }
+    }
+
+}
+
+
+
+
+
+
+
+
+
+/*
 class OnBoardingAdapter(private val context: Context, private val onBoardDataItems: ArrayList<OnBoardData>): PagerAdapter() {
 
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
@@ -37,4 +67,4 @@ data class OnBoardData(
     val headerText1: String,
     val headerText2: String,
     val descriptionText: String
-)
+)*/

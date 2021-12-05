@@ -1,52 +1,66 @@
-package com.ridehub360.ridepal
+package com.ridehub360.ridepal.ui.login
 
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.Typeface
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.*
 import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
 import android.text.style.ForegroundColorSpan
 import android.text.style.StyleSpan
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import kotlinx.android.synthetic.main.activity_sign_up.*
-import kotlinx.android.synthetic.main.activity_sign_up.et_email_layout
-import kotlinx.android.synthetic.main.activity_sign_up.et_password
-import kotlinx.android.synthetic.main.activity_sign_up.et_password_layout
+import androidx.navigation.fragment.findNavController
+import com.ridehub360.ridepal.MainActivity
+import com.ridehub360.ridepal.R
+import com.ridehub360.ridepal.databinding.FragmentSignUpBinding
 
-class SignUpActivity : AppCompatActivity() {
-
+class SignUpFragment : Fragment() {
+    lateinit var binding: FragmentSignUpBinding
     private lateinit var nameTextWatcher: TextWatcher
     private lateinit var emailTextWatcher: TextWatcher
     private lateinit var passwordTextWatcher: TextWatcher
     private lateinit var confirmPasswordTextWatcher: TextWatcher
     private lateinit var viewModel: SignUpViewModel
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_sign_up)
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        // Inflate the layout for this fragment
+        return FragmentSignUpBinding.inflate(inflater).let {
+            binding = it
+            binding.root
+        }
+    }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         setupView()
         observeFields()
     }
 
     private fun setupView() {
         viewModel = ViewModelProvider(this).get(SignUpViewModel::class.java)
-        setClickableString(tv_sign_in.text.toString().trim(), "Sign In", tv_sign_in)
-        setupTextWatcher()
-        et_name.addTextChangedListener(nameTextWatcher)
-        et_email.addTextChangedListener(emailTextWatcher)
-        et_password.addTextChangedListener(passwordTextWatcher)
-        et_confirm_password.addTextChangedListener(confirmPasswordTextWatcher)
-        bt_sign_up.setOnClickListener {
-            startActivity(Intent(this, MainActivity::class.java))
-            finish()
+
+        with(binding) {
+            setClickableString(tvSignIn.text.toString().trim(), "Sign In", tvSignIn)
+            setupTextWatcher()
+            etName.addTextChangedListener(nameTextWatcher)
+            etEmail.addTextChangedListener(emailTextWatcher)
+            etPassword.addTextChangedListener(passwordTextWatcher)
+            etConfirmPassword.addTextChangedListener(confirmPasswordTextWatcher)
+            btSignUp.setOnClickListener {
+                startActivity(Intent(requireContext(), MainActivity::class.java))
+                requireActivity().finish()
+            }
         }
+
     }
 
     private fun setClickableString(wholeText: String, clickableText: String, tv: TextView) {
@@ -55,14 +69,18 @@ class SignUpActivity : AppCompatActivity() {
         val endIndex = startIndex + clickableText.length
         spannableString.setSpan(StyleSpan(Typeface.BOLD), startIndex, endIndex, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
         spannableString.setSpan(ForegroundColorSpan(Color.parseColor("#3172AC")), startIndex, endIndex, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+
         spannableString.setSpan(object: ClickableSpan() {
             override fun updateDrawState(ds: TextPaint) {
                 super.updateDrawState(ds)
                 ds.isUnderlineText = false
             }
             override fun onClick(widget: View) {
-                startActivity(Intent(this@SignUpActivity, SignInActivity::class.java))
-                finish()
+                val controller = findNavController()
+                val action = SignUpFragmentDirections.signUpFragmentToSignInFragment()
+                controller.navigateUp()
+                //startActivity(Intent(this@SignUpActivity, SignInActivity::class.java))
+                //finish()
             }
         }, startIndex, endIndex, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
         tv.text = spannableString
@@ -83,12 +101,12 @@ class SignUpActivity : AppCompatActivity() {
                         nameValid.value = false
                         viewModel.setDataFilled()
                     }
-                    et_name_layout.apply {
+                    binding.etNameLayout.apply {
                         isErrorEnabled = true
                         error = "Input a valid Name"
                     }
                 } else {
-                    et_name_layout.isErrorEnabled = false
+                    binding.etNameLayout.isErrorEnabled = false
                     viewModel.apply {
                         nameValid.value = true
                         viewModel.setDataFilled()
@@ -106,7 +124,7 @@ class SignUpActivity : AppCompatActivity() {
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 if (s!!.toString().contains("@") && s.toString().contains(".")) {
-                    et_email_layout.isErrorEnabled = false
+                    binding.etEmailLayout.isErrorEnabled = false
                     viewModel.apply {
                         emailValid.value = true
                         setDataFilled()
@@ -116,7 +134,7 @@ class SignUpActivity : AppCompatActivity() {
                         emailValid.value = false
                         setDataFilled()
                     }
-                    et_email_layout.apply {
+                    binding.etEmailLayout.apply {
                         isErrorEnabled = true
                         error = "Input a valid Email Address"
                     }
@@ -133,7 +151,7 @@ class SignUpActivity : AppCompatActivity() {
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 if (s!!.trim().length >= 8) {
-                    et_password_layout.isErrorEnabled = false
+                    binding.etPasswordLayout.isErrorEnabled = false
                     viewModel.apply {
                         passwordValid.value = true
                         setDataFilled()
@@ -143,7 +161,7 @@ class SignUpActivity : AppCompatActivity() {
                         passwordValid.value = false
                         setDataFilled()
                     }
-                    et_password_layout.apply {
+                    binding.etPasswordLayout.apply {
                         isErrorEnabled = true
                         error = "Password should be at least 8 characters"
                     }
@@ -159,18 +177,18 @@ class SignUpActivity : AppCompatActivity() {
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                if (s!!.trim() == et_password.text!!.trim()) {
+                if (s!!.trim() == binding.etPassword.text!!.trim()) {
                     viewModel.apply {
                         confirmPasswordValid.value = true
                         setDataFilled()
                     }
-                    et_confirm_password_layout.isErrorEnabled = false
+                    binding.etConfirmPasswordLayout.isErrorEnabled = false
                 } else {
                     viewModel.apply {
                         confirmPasswordValid.value = false
                         setDataFilled()
                     }
-                    et_confirm_password_layout.apply {
+                    binding.etConfirmPasswordLayout.apply {
                         isErrorEnabled = true
                         error = "Password should be the same"
                     }
@@ -180,14 +198,14 @@ class SignUpActivity : AppCompatActivity() {
     }
 
     private fun observeFields() {
-        viewModel.allDataFilled.observe(this, Observer {
+        viewModel.allDataFilled.observe(viewLifecycleOwner, Observer {
             if (it) {
-                bt_sign_up.apply {
+                binding.btSignUp.apply {
                     isEnabled = true
                     setBackgroundColor(resources.getColor(R.color.colorPrimary))
                 }
             } else {
-                bt_sign_up.apply {
+                binding.btSignUp.apply {
                     isEnabled = false
                     setBackgroundColor(resources.getColor(R.color.buttonDisabledColor))
                 }

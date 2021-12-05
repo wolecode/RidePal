@@ -1,4 +1,4 @@
-package com.ridehub360.ridepal
+package com.ridehub360.ridepal.ui.login
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
