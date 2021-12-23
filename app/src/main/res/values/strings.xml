@@ -13,6 +13,7 @@
     <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex</string>
     <string name="policy">Creating an account means you’re okay with our <u>Terms of Service</u> and our <u>Privacy Policy</u></string>
     <string name="welcome">Hello &#x1F44B; Welcome to the DashBoard &#x1F917;</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="cycling_tips">Cycling Tips</string>
+    <string name="profile">Me</string>
 </resources>

@@ -16,7 +16,7 @@
     <fragment
         android:id="@+id/signUpFragment"
         android:name="com.ridehub360.ridepal.ui.login.SignUpFragment"
-        tools:layout="@layout/activity_sign_up">
+        tools:layout="@layout/fragment_sign_up">
         <action
             android:id="@+id/signUpFragmentToSignInFragment"
             app:destination="@+id/signInFragment" />

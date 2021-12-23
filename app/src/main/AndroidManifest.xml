@@ -30,7 +30,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.ridehub360.ridepal.OnBoardingActivity"
+            android:name="com.ridehub360.ridepal.ui.onboarding.OnBoardingActivity"
             android:theme="@style/FullScreenTheme" />
         <activity
             android:name="com.ridehub360.ridepal.MainActivity"

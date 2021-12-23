@@ -1,4 +1,4 @@
-package com.ridehub360.ridepal
+package com.ridehub360.ridepal.ui.onboarding
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,8 +8,8 @@ import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.viewpager2.widget.ViewPager2
+import com.ridehub360.ridepal.R
 import com.ridehub360.ridepal.databinding.ActivityOnBoardingBinding
-import com.ridehub360.ridepal.ui.OnBoardingAdapter
 import com.ridehub360.ridepal.ui.login.SignInActivity
 
 //import kotlinx.android.synthetic.main.activity_on_boarding.*
