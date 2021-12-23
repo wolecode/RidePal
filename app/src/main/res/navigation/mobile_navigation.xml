@@ -13,13 +13,25 @@
 
     <fragment
         android:id="@+id/navigation_readings"
-        android:name="com.ridehub360.ridepal.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        android:name="com.ridehub360.ridepal.ui.home.ReadingsFragment"
+        android:label="@string/readings"
+        tools:layout="@layout/readings_fragment" />
 
     <fragment
-        android:id="@+id/navigation_ride"
-        android:name="com.ridehub360.ridepal.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:id="@+id/navigation_location"
+        android:name="com.ridehub360.ridepal.ui.home.LocationFragment"
+        android:label="@string/location"
+        tools:layout="@layout/location_fragment" />
+
+    <fragment
+        android:id="@+id/navigation_cycling_tips"
+        android:name="com.ridehub360.ridepal.ui.home.CyclingTipsFragment"
+        android:label="@string/cycling_tips"
+        tools:layout="@layout/cycling_tips_fragment" />
+
+    <fragment
+        android:id="@+id/navigation_profile"
+        android:name="com.ridehub360.ridepal.ui.home.ProfileFragment"
+        android:label="@string/profile"
+        tools:layout="@layout/profile_fragment" />
 </navigation>
