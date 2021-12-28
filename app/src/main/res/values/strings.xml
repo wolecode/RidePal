@@ -16,4 +16,10 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="cycling_tips">Cycling Tips</string>
     <string name="profile">Me</string>
+    <string name="welcome1">Hello, &lt;b>%1$s&lt;/b></string>
+    <string name="quick_tabs">Quick Tabs</string>
+    <string name="exercise_button_icon">Exercise</string>
+    <string name="reading_button">Reading</string>
+    <string name="recent_locations">Recent Locations</string>
+    <string name="direction">Direction</string>
 </resources>

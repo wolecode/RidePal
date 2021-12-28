@@ -12,15 +12,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.ridehub360.ridepal.SignUpActivity">
-
-        </activity>
         <activity
             android:name="com.ridehub360.ridepal.ui.login.SignInActivity"
             android:theme="@style/FullScreenTheme"/>
         <activity
-            android:name="com.ridehub360.ridepal.SplashActivity"
-            android:theme="@style/SplashScreenTheme"
+            android:name="com.ridehub360.ridepal.MainActivity"
             android:exported="true">
 
             <intent-filter>
@@ -33,7 +29,8 @@
             android:name="com.ridehub360.ridepal.ui.onboarding.OnBoardingActivity"
             android:theme="@style/FullScreenTheme" />
         <activity
-            android:name="com.ridehub360.ridepal.MainActivity"
+            android:name="com.ridehub360.ridepal.SplashActivity"
+            android:theme="@style/SplashScreenTheme"
             android:label="@string/app_name">
         </activity>
 

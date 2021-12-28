@@ -3,23 +3,33 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/hpb/Code/RidePal/app/src/main/res/drawable/double_arrow.xml" value="0.17743589743589744" />
+        <entry key="..\:/Users/hpb/Code/RidePal/app/src/main/res/drawable/exercise_button_icon.xml" value="0.17743589743589744" />
         <entry key="..\:/Users/hpb/Code/RidePal/app/src/main/res/drawable/home_icon_selector.xml" value="0.19583333333333333" />
+        <entry key="..\:/Users/hpb/Code/RidePal/app/src/main/res/drawable/ic_facebook.xml" value="0.18020833333333333" />
+        <entry key="..\:/Users/hpb/Code/RidePal/app/src/main/res/drawable/ic_google.xml" value="0.18020833333333333" />
         <entry key="..\:/Users/hpb/Code/RidePal/app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.16354166666666667" />
         <entry key="..\:/Users/hpb/Code/RidePal/app/src/main/res/drawable/ic_onboarding_img1.xml" value="0.19583333333333333" />
         <entry key="..\:/Users/hpb/Code/RidePal/app/src/main/res/drawable/ic_onboarding_img2.xml" value="0.19583333333333333" />
         <entry key="..\:/Users/hpb/Code/RidePal/app/src/main/res/drawable/item_dot_non_selected.xml" value="0.19583333333333333" />
         <entry key="..\:/Users/hpb/Code/RidePal/app/src/main/res/drawable/item_dot_selected.xml" value="0.19583333333333333" />
+        <entry key="..\:/Users/hpb/Code/RidePal/app/src/main/res/drawable/location_icon_selector.xml" value="0.19583333333333333" />
+        <entry key="..\:/Users/hpb/Code/RidePal/app/src/main/res/drawable/readings_icon_selector.xml" value="0.19583333333333333" />
+        <entry key="..\:/Users/hpb/Code/RidePal/app/src/main/res/drawable/tips_icon_selector.xml" value="0.19583333333333333" />
+        <entry key="..\:/Users/hpb/Code/RidePal/app/src/main/res/drawable/vector.xml" value="0.17743589743589744" />
+        <entry key="..\:/Users/hpb/Code/RidePal/app/src/main/res/drawable/vicks.xml" value="0.16944444444444445" />
         <entry key="..\:/Users/hpb/Code/RidePal/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Users/hpb/Code/RidePal/app/src/main/res/layout/activity_on_boarding.xml" value="0.13072916666666667" />
         <entry key="..\:/Users/hpb/Code/RidePal/app/src/main/res/layout/activity_sign_in.xml" value="0.1" />
         <entry key="..\:/Users/hpb/Code/RidePal/app/src/main/res/layout/activity_sign_up.xml" value="0.1" />
         <entry key="..\:/Users/hpb/Code/RidePal/app/src/main/res/layout/activity_splash.xml" value="0.25" />
         <entry key="..\:/Users/hpb/Code/RidePal/app/src/main/res/layout/fragment_dashboard.xml" value="0.13677536231884058" />
-        <entry key="..\:/Users/hpb/Code/RidePal/app/src/main/res/layout/fragment_home.xml" value="0.16216216216216217" />
+        <entry key="..\:/Users/hpb/Code/RidePal/app/src/main/res/layout/fragment_home.xml" value="0.165" />
         <entry key="..\:/Users/hpb/Code/RidePal/app/src/main/res/layout/fragment_notifications.xml" value="0.13677536231884058" />
         <entry key="..\:/Users/hpb/Code/RidePal/app/src/main/res/layout/fragment_onboarding_pager.xml" value="0.165" />
         <entry key="..\:/Users/hpb/Code/RidePal/app/src/main/res/layout/fragment_sign_in.xml" value="0.15625" />
         <entry key="..\:/Users/hpb/Code/RidePal/app/src/main/res/layout/fragment_sign_up.xml" value="0.125" />
+        <entry key="..\:/Users/hpb/Code/RidePal/app/src/main/res/layout/recent_locations_adapter.xml" value="0.165" />
         <entry key="..\:/Users/hpb/Code/RidePal/app/src/main/res/menu/bottom_nav_menu.xml" value="0.25" />
       </map>
     </option>

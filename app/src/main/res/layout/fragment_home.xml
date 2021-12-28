@@ -6,4 +6,120 @@
     android:layout_height="match_parent"
     tools:context=".ui.home.HomeFragment">
 
+    <ImageView
+        android:id="@+id/profile_image"
+        android:layout_width="85dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/profile_image"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@id/profile_image"
+        app:layout_constraintTop_toTopOf="@id/profile_image" />
+
+    <TextView
+        android:id="@+id/quickTabs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/montserrat_bold"
+        android:text="@string/quick_tabs"
+        android:textColor="@color/buttonDisabledColor"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/profile_image" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/exerciseButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="@android:color/white"
+        android:drawableEnd="@drawable/exercise_button_icon"
+        android:fontFamily="@font/montserrat"
+        android:text="@string/exercise_button_icon"
+        android:textAllCaps="false"
+        android:textColor="@color/myColor"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:elevation="20dp"
+        app:layout_constraintStart_toStartOf="@id/quickTabs"
+        app:layout_constraintTop_toBottomOf="@id/quickTabs" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/readingButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="@android:color/white"
+        android:drawableEnd="@drawable/readings_button_icon"
+        android:fontFamily="@font/montserrat"
+        android:text="@string/reading_button"
+        android:textAllCaps="false"
+        android:textColor="@color/myColor"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:elevation="20dp"
+        app:layout_constraintStart_toEndOf="@id/exerciseButton"
+        app:layout_constraintTop_toBottomOf="@id/quickTabs" />
+
+    <TextView
+        android:id="@+id/recentLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/montserrat_bold"
+        android:text="@string/recent_locations"
+        android:textColor="@color/buttonDisabledColor"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@id/exerciseButton"
+        app:layout_constraintTop_toBottomOf="@id/exerciseButton" />
+    <ImageView
+        android:id="@+id/locationEndScroll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:src="@drawable/double_arrow"
+        app:tint="@color/buttonDisabledColor"
+        app:layout_constraintTop_toTopOf="@id/recentLocation"
+        app:layout_constraintBottom_toBottomOf="@id/recentLocation"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.34" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.6" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/locationRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="@id/recentLocation"
+        app:layout_constraintTop_toTopOf="@id/guideline3"
+        app:layout_constraintBottom_toBottomOf="@id/guideline4"
+        tools:listitem="@layout/recent_locations_adapter"
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>
