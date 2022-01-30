@@ -2,6 +2,7 @@ package com.ridehub360.ridepal.ui.onboarding
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
@@ -88,14 +89,14 @@ class OnBoardingActivity : AppCompatActivity() {
                 LinearLayout.LayoutParams.WRAP_CONTENT
             )
             params.customMargin(i)
-            binding.counterLayout.addView(counter[i], params)
+            binding.counterLayout.addView(counter[i])
         }
         counter[0].setImageDrawable(ContextCompat.getDrawable(this, R.drawable.item_dot_selected))
     }
 
     private fun LinearLayout.LayoutParams.customMargin(counterPosition: Int) {
         if (counterPosition == 0) {
-            this.setMargins(0, 0, 0, 0)
+            this.setMargins(10, 0, 0, 0)
 
         } else {
             this.setMargins(10, 0, 0, 0)

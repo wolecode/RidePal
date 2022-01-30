@@ -22,4 +22,9 @@
     <string name="reading_button">Reading</string>
     <string name="recent_locations">Recent Locations</string>
     <string name="direction">Direction</string>
+    <string name="recent_readings">Recent Readings</string>
+    <string name="duration">Duration</string>
+    <string name="heart_rate">Heart Rate</string>
+    <string name="calories">Calories</string>
+    <string name="new_reading">New Reading</string>
 </resources>

@@ -1,4 +1,4 @@
-package com.ridehub360.ridepal
+package com.ridehub360.ridepal.model
 
 data class DestinationModel(val location: LocationModel,
                             val duration: String,

@@ -17,6 +17,7 @@
             android:theme="@style/FullScreenTheme"/>
         <activity
             android:name="com.ridehub360.ridepal.MainActivity"
+            android:theme="@style/FullScreenTheme"
             android:exported="true">
 
             <intent-filter>

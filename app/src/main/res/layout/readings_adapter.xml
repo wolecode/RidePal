@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="12dp"
+    app:strokeColor="@color/myColor"
+    app:strokeWidth="1dp"
+    >
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp">
+
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/myColor"
+            android:fontFamily="@font/montserrat"
+            android:gravity="center"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:text="Monday: November 16, 2020"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/durationLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/date">
+
+            <ImageView
+                android:id="@+id/durationIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/duration_icon"
+                />
+            <TextView
+                android:id="@+id/durationTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0:00:15"
+                android:textSize="24sp"
+                android:fontFamily="@font/montserrat"
+                android:textColor="@color/myColor"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/duration"
+                android:textSize="14sp"
+                android:fontFamily="@font/montserrat"
+                android:textColor="@color/buttonDisabledColor"
+                />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/heartRateLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            app:layout_constraintStart_toEndOf="@id/durationLayout"
+            app:layout_constraintEnd_toStartOf="@id/caloriesLayout"
+            app:layout_constraintTop_toBottomOf="@id/date">
+
+            <ImageView
+                android:id="@+id/heartRateIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="38dp"
+                android:src="@drawable/heart_rate_icon"
+                />
+            <TextView
+                android:id="@+id/heartRateReading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="85 BPM"
+                android:textSize="24sp"
+                android:fontFamily="@font/montserrat"
+                android:textColor="@color/myColor"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/heart_rate"
+                android:textSize="14sp"
+                android:fontFamily="@font/montserrat"
+                android:textColor="@color/buttonDisabledColor"
+                />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/caloriesLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/date">
+
+            <ImageView
+                android:id="@+id/caloriesIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="38dp"
+                android:src="@drawable/calories_icon"
+                />
+            <TextView
+                android:id="@+id/caloriesReading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="566"
+                android:textSize="24sp"
+                android:fontFamily="@font/montserrat"
+                android:textColor="@color/myColor"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/calories"
+                android:textSize="14sp"
+                android:fontFamily="@font/montserrat"
+                android:textColor="@color/buttonDisabledColor"
+                />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>
